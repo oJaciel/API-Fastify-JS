@@ -1,0 +1,14 @@
+//Usando extensão REST Client (humao.rest-client)
+
+GET http://localhost:3333/alunos
+
+###
+
+POST http://localhost:3333/alunos
+Content-Type: application/json
+
+{
+    "name": "Maria",
+    "email": "maria@upf.br",
+    "age": 20
+}
