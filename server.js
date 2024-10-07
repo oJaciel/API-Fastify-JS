@@ -11,7 +11,7 @@ server.get('/', () => {
 })
 
 server.get('/alunos', () => {
-    return 'Aqui a lista de alunos'
+    return database.list()
 })
 
 server.post('/alunos', (request, reply) => {
@@ -24,12 +24,20 @@ server.post('/alunos', (request, reply) => {
     return reply.status(201).send()
 })
 
-server.put('/alunos/:id', () => {
-    return 'Aqui atualiza / altera um aluno'
+server.put('/alunos/:id', (request, reply) => {
+    const id = request.params.id
+    database.update(id, {
+        name: request.body.name,
+        email: request.body.email,
+        age: request.body.age
+    })
+    return reply.status(204).send()
 })
 
-server.delete('/alunos/:id', () => {
-    return 'Aqui deleta um aluno'
+server.delete('/alunos/:id', (request, reply) => {
+    const id = request.params.id
+    database.delete(id);
+    return reply.status(204).send
 })
 
 server.listen({

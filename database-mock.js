@@ -6,7 +6,7 @@ export class DatabaseMock {
 
     //Listar os alunos / Simula um select na tabela
     list() {
-        return this.#alunos.values()
+        return Array.from(this.#alunos.entries())
     }
 
     //Criar um aluno / Simula um insert na tabela
@@ -17,7 +17,7 @@ export class DatabaseMock {
 
     //Atualizar um aluno / Simula um update na tabela
     update(id, aluno) {
-        this.#alunos.set(alunoId, aluno)
+        this.#alunos.set(id, aluno)
     }
 
     //Deletar um aluno / Simula um delete na tabela

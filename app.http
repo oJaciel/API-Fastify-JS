@@ -12,3 +12,18 @@ Content-Type: application/json
     "email": "maria@upf.br",
     "age": 20
 }
+
+###
+
+PUT http://localhost:3333/alunos/...
+Content-Type: application/json
+
+{
+    "name": "Jaciel",
+    "email": "jaciel@upf.br",
+    "age": 19
+}
+
+###
+
+DELETE http://localhost:3333/alunos/...
