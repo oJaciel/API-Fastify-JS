@@ -1,21 +1,22 @@
 import { fastify } from "fastify";
 import { DatabaseMock } from "./database-mock.js";
+import { DatabasePostgreSQL } from "./database-postgres.js";
 
 const server = fastify()
 
-const database = new DatabaseMock()
-
+//Para alternar entre database trocar a classe aqui
+const database = new DatabasePostgreSQL()
 
 server.get('/', () => {
     return 'Olá, bem vindo ao servidor'
 })
 
-server.get('/alunos', () => {
-    return database.list()
+server.get('/alunos', async () => {
+    return await database.list()
 })
 
-server.post('/alunos', (request, reply) => {
-    database.create({
+server.post('/alunos', async (request, reply) => {
+    await database.create({
         name: request.body.name,
         email: request.body.email,
         age: request.body.age
@@ -24,9 +25,9 @@ server.post('/alunos', (request, reply) => {
     return reply.status(201).send()
 })
 
-server.put('/alunos/:id', (request, reply) => {
+server.put('/alunos/:id', async (request, reply) => {
     const id = request.params.id
-    database.update(id, {
+    await database.update(id, {
         name: request.body.name,
         email: request.body.email,
         age: request.body.age
@@ -34,9 +35,9 @@ server.put('/alunos/:id', (request, reply) => {
     return reply.status(204).send()
 })
 
-server.delete('/alunos/:id', (request, reply) => {
+server.delete('/alunos/:id', async (request, reply) => {
     const id = request.params.id
-    database.delete(id);
+    await database.delete(id);
     return reply.status(204).send
 })
 
