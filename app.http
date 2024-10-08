@@ -1,5 +1,8 @@
 //Usando extensão REST Client (humao.rest-client)
 
+//SITE NO RENDER
+//https://appnodejs-k07h.onrender.com/
+
 GET http://localhost:3333/alunos
 
 ###
