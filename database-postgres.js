@@ -1,5 +1,5 @@
-import './config-db.js'
-import 'node:crypto'
+import sql from './config-db.js'
+import { randomUUID } from "node:crypto"
 
 export class DatabasePostgreSQL {
 
